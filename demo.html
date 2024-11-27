@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息通知组件</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./ydmessage.css">
+    <script src="./ydmessage.js"></script>
+    
+</head>
+<body>
+    <!-- 测试按钮组 -->
+    <div style="padding: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <button onclick="YDMessage.success('操作成功', '您的更改已成功保存')">成功提示</button>
+        <button onclick="YDMessage.error('操作失败', '请检查网络连接后重试')">错误提示</button>
+        <button onclick="YDMessage.warning('注意', '您的账户余额不足')">警告提示</button>
+        <button onclick="YDMessage.info('系统提示', '有新的系统更新可用')">信息提示</button>
+        <button onclick="YDMessage.confirm('确认删除', '此操作不可恢复，是否继续？')">确认提示</button>
+        <button onclick="showDemo()">演示全部</button>
+    </div>
+
+   <script>
+
+function showDemo() {
+            // 基础提示
+            YDMessage.success('操作成功', '您的更改已成功保存');
+
+            setTimeout(() => {
+                YDMessage.info('自定义位置', '显示在左上角', {
+                    position: 'top-left'
+                });
+            }, 1000);
+
+            setTimeout(() => {
+                YDMessage.warning('注意', '您的账户余额不足', {
+                    position: 'bottom-right'
+                });
+            }, 2000);
+
+            setTimeout(() => {
+                YDMessage.error('操作失败', '请检查网络连接后重试', {
+                    position: 'bottom-left'
+                });
+            }, 3000);
+
+            setTimeout(() => {
+                YDMessage.confirm('确认删除', '此操作不可恢复，是否继续？', {
+                    confirm: () => console.log('用户确认'),
+                    cancel: () => console.log('用户取消')
+                });
+            }, 4000);
+        }
+   </script>
+</body>
+</html> 
